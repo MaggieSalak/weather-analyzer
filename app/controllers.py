@@ -19,6 +19,7 @@ class WeatherController:
     def get_current_weather(self):
         url = self.current_weather_url()
         weather_dict = utils.query_url(url)
+        print(weather_dict)
         weather_data = models.dict_to_weather_data(weather_dict)
         print(weather_data)
         return vars(weather_data)
