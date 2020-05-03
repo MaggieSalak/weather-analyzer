@@ -21,8 +21,4 @@ class WeatherController:
         weather_dict = utils.query_url(url)
         print(weather_dict)
         weather_data = models.dict_to_weather_data(weather_dict)
-        print(weather_data)
-        return vars(weather_data)
-
-    def get_weather(self):
-        return self.get_current_weather()
+        return weather_data

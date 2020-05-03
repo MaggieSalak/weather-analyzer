@@ -12,7 +12,7 @@ class WeatherData(object):
 
 def convert_temp_to_celsius_rounded(temp_kelvin):
     temp_celsius = convert_temperature(temp_kelvin, 'K', 'C')
-    return temp_celsius.round()
+    return int(temp_celsius.round())
 
 def dict_to_weather_data(weather_dict):
     location = weather_dict['name']
