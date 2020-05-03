@@ -3,11 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>Weather analysis</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
   </head>
   <body>
-    <h1> Weather in {{ weather.location }} </h1>
-    <p>{{ weather.weather }}</p>
-    <p>Description: {{ weather.description }}</p>
-    <p>Temperature: {{ weather.temp }}, min: {{ weather.temp_min }}, max: {{ weather.temp_max }}</p>
+
+    <div class="jumbotron">
+      <h1>  Weather in {{ weather.location }}  </h1>
+      <h4>{{ weather.weather }}</h4>
+      <p>Description: {{ weather.description }}</p>
+      <p>Temperature: {{ weather.temp }}°C, min: {{ weather.temp_min }}°C, max: {{ weather.temp_max }}°C</p>
+    </div>
+
   </body>
 </html>
