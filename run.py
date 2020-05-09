@@ -10,7 +10,7 @@ cache.init_app(app)
 @cache.cached(timeout=300)
 def weather():
     weather_controller = controllers.WeatherController()
-    current_weather = weather_controller.get_current_weather()
+    current_weather = weather_controller.get_weather()
     return render_template("weather.html", weather=current_weather)
 
 
