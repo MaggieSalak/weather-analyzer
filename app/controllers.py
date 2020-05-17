@@ -38,8 +38,11 @@ class WeatherController:
     def get_weather(self):
         current_weather_dict = self.get_current_weather()
         print(current_weather_dict)
-        current_weather = models.dict_to_weather_data(current_weather_dict)
-        weather_forecast = self.get_weather_forecast(current_weather)
+        weather_data = models.get_weather_data(current_weather_dict)
+        weather_forecast_dict = self.get_weather_forecast(weather_data)
         print('forecast')
-        print(weather_forecast)
-        return current_weather
+        print(weather_forecast_dict)
+        forecast = models.dict_to_daily_forecast(weather_forecast_dict)
+        weather_data = models.add_daily_forecast(weather_data, forecast)
+
+        return weather_data
