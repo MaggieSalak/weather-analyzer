@@ -40,20 +40,30 @@ class WeatherTemperature:
         self.temp_min = temp_min
 
 
-def get_weather_data(weather_dict):
+def get_location(weather_dict):
     location_name = weather_dict['name']
     location_lat = weather_dict['coord']['lat']
     location_lon = weather_dict['coord']['lon']
-    location = Location(location_name, location_lat, location_lon)
+    return Location(location_name, location_lat, location_lon)
 
+
+def get_weather_details(weather_dict):
+    main = weather_dict['weather'][0]['main']
+    description = weather_dict['weather'][0]['description']
+    return WeatherDetails(main, description)
+
+
+def get_weather_date(weather_dict):
     date = utils.timestamp_to_datetime(weather_dict['dt'])
     weekday = utils.datetime_to_weekday(date)
     date_str = utils.datetime_to_date_string(date)
-    weather_date = WeatherDate(weekday, date_str)
+    return WeatherDate(weekday, date_str)
 
-    main = weather_dict['weather'][0]['main']
-    description = weather_dict['weather'][0]['description']
-    weather_details = WeatherDetails(main, description)
+
+def get_weather_data(weather_dict):
+    location = get_location(weather_dict)
+    weather_date = get_weather_date(weather_dict)
+    weather_details = get_weather_details(weather_dict)
 
     temp = utils.convert_temp_to_celsius_rounded(weather_dict['main']['temp'])
     temp_min = utils.convert_temp_to_celsius_rounded(weather_dict['main']['temp_min'])
@@ -66,14 +76,8 @@ def get_weather_data(weather_dict):
 
 
 def get_daily_weather(weather_dict):
-    date = utils.timestamp_to_datetime(weather_dict['dt'])
-    weekday = utils.datetime_to_weekday(date)
-    date_str = utils.datetime_to_date_string(date)
-    weather_date = WeatherDate(weekday, date_str)
-
-    main = weather_dict['weather'][0]['main']
-    description = weather_dict['weather'][0]['description']
-    weather_details = WeatherDetails(main, description)
+    weather_date = get_weather_date(weather_dict)
+    weather_details = get_weather_details(weather_dict)
 
     temp = utils.convert_temp_to_celsius_rounded(weather_dict['temp']['day'])
     temp_min = utils.convert_temp_to_celsius_rounded(weather_dict['temp']['min'])
