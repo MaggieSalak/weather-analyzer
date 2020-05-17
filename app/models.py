@@ -2,8 +2,13 @@ from scipy.constants import convert_temperature
 
 
 class WeatherData(object):
-    def __init__(self, location, weather, temp):
+    def __init__(self, location, daily_weather_list):
         self.location = location
+        self.daily_weather = daily_weather_list
+
+
+class DailyWeather:
+    def __init__(self, weather, temp):
         self.weather = weather
         self.temp = temp
 
@@ -48,4 +53,6 @@ def dict_to_weather_data(weather_dict):
     temp_max = convert_temp_to_celsius_rounded(weather_dict['main']['temp_max'])
     temperature = WeatherTemperature(temp, temp_max, temp_min)
 
-    return WeatherData(location, weather_details, temperature)
+    daily_weather = DailyWeather(weather_details, temperature)
+
+    return WeatherData(location, [daily_weather])

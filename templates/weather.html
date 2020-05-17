@@ -9,9 +9,12 @@
 
     <div class="jumbotron">
       <h1>  Weather in {{ weather.location.name }}  </h1>
-      <h4>{{ weather.weather.main }}</h4>
-      <p>Description: {{ weather.weather.description }}</p>
-      <p>Temperature: {{ weather.temp.temp }}°C, min: {{ weather.temp.temp_min }}°C, max: {{ weather.temp.temp_max }}°C</p>
+      <h4>{{ weather.daily_weather[0].weather.main }}</h4>
+      <p></p>
+      <p>Description: {{ weather.daily_weather[0].weather.description }}</p>
+      <p>Temperature: {{ weather.daily_weather[0].temp.temp }}°C,
+        min: {{ weather.daily_weather[0].temp.temp_min }}°C,
+        max: {{ weather.daily_weather[0].temp.temp_max }}°C</p>
     </div>
 
   </body>
