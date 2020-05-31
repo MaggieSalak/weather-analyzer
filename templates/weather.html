@@ -15,6 +15,13 @@
       <p>Temperature: {{ weather.daily[0].temp.temp }}°C,
         min: {{ weather.daily[0].temp.temp_min }}°C,
         max: {{ weather.daily[0].temp.temp_max }}°C</p>
+      <hr class="my-4">
+      <div>
+        {%for i in range(0, len)%}
+            <p>{{ weather.daily[i].weather.description }}</p>
+            <p>Temperature: {{ weather.daily[i].temp.temp }}°C</p>
+        {%endfor%}
+      </div>
     </div>
 
   </body>

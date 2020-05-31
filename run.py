@@ -11,7 +11,7 @@ cache.init_app(app)
 def weather():
     weather_controller = controllers.WeatherController()
     current_weather = weather_controller.get_weather()
-    return render_template("weather.html", weather=current_weather)
+    return render_template("weather.html", len=len(current_weather.daily), weather=current_weather)
 
 
 if __name__ == '__main__':
