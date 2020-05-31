@@ -25,5 +25,16 @@ def datetime_to_weekday(date):
     return calendar.day_name[date.weekday()]
 
 
+def day_number_ending(day_num):
+    if day_num % 10 == 1 and day_num != 11:
+        return 'st'
+    if day_num % 10 == 2 and day_num != 12:
+        return 'nd'
+    if day_num % 10 == 3 and day_num != 13:
+        return 'rd'
+    return 'th'
+
 def datetime_to_date_string(date):
-    return date.strftime('%d/%m/%Y')
+    day_ending = day_number_ending(date.day)
+    date_str = date.strftime('%B %d')
+    return date_str + day_ending
