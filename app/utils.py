@@ -25,7 +25,7 @@ def datetime_to_weekday(date):
     return calendar.day_name[date.weekday()]
 
 
-def day_number_ending(day_num):
+def day_number_suffix(day_num):
     if day_num % 10 == 1 and day_num != 11:
         return 'st'
     if day_num % 10 == 2 and day_num != 12:
@@ -35,6 +35,6 @@ def day_number_ending(day_num):
     return 'th'
 
 def datetime_to_date_string(date):
-    day_ending = day_number_ending(date.day)
-    date_str = date.strftime('%B %d')
-    return date_str + day_ending
+    day_suffix = day_number_suffix(date.day)
+    month_str = date.strftime('%B')
+    return month_str + ' ' + str(date.day) + day_suffix
