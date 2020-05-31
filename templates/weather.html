@@ -8,8 +8,9 @@
   <body>
 
     <div class="jumbotron">
-      <h1>  Weather in {{ weather.location.name }}  </h1>
-      <h4>{{ weather.daily[0].weather.main }}</h4>
+<!--      <h1>  Weather in {{ weather.location.name }}  </h1>-->
+      <h1 class="display-4">Weather in {{ weather.location.name }}</h1>
+      <h2>{{ weather.daily[0].weather.main }}</h2>
       <p></p>
       <p>Description: {{ weather.daily[0].weather.description }}</p>
       <p>Temperature: {{ weather.daily[0].temp.temp }}°C,
@@ -17,9 +18,10 @@
         max: {{ weather.daily[0].temp.temp_max }}°C</p>
       <hr class="my-4">
       <div>
-        {%for i in range(0, len)%}
-            <p>{{ weather.daily[i].weather.description }}</p>
-            <p>Temperature: {{ weather.daily[i].temp.temp }}°C</p>
+        {%for i in range(2, len)%}
+            <h4>{{ weather.daily[i].date.weekday }}, {{ weather.daily[i].date.date }}</h4>
+            <p>{{ weather.daily[i].weather.main }}, {{ weather.daily[i].temp.temp }}°C</p>
+            <p></p>
         {%endfor%}
       </div>
     </div>
