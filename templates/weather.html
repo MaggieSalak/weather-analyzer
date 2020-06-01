@@ -4,14 +4,17 @@
     <meta charset="utf-8">
     <title>Weather analysis</title>
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/weather.css') }}">
   </head>
   <body>
 
     <div class="jumbotron">
-<!--      <h1>  Weather in {{ weather.location.name }}  </h1>-->
-      <h1 class="display-3">Weather in {{ weather.location.name }}</h1>
-        <p></p>
-      <h3 class="display-4">{{ weather.daily[0].weather.main }}</h3>
+      <h1 class="display-3">Weather in {{ weather.location.name }}</h1><p></p>
+      <div class="header">
+        <h3 class="display-4">{{ weather.daily[0].weather.main }}
+        <img src="/static/assets/cloudy-icon-26.jpg"/></h3>
+      </div>
+
       <p></p>
       <p class="lead">Description: {{ weather.daily[0].weather.description }}</p>
       <p class="lead">Temperature: {{ weather.daily[0].temp.temp }}°C,
