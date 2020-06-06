@@ -28,9 +28,15 @@ class WeatherDate:
 
 
 class WeatherDetails:
-    def __init__(self, main, description):
+    weather_icon_dict = {
+        'Rain': 'rain.png',
+        'Clouds': 'clouds.jpg'
+    }
+
+    def __init__(self, main, description, icon):
         self.main = main
         self.description = description
+        self.icon = icon
 
 
 class WeatherTemperature:
@@ -47,10 +53,17 @@ def get_location(weather_dict):
     return Location(location_name, location_lat, location_lon)
 
 
+def get_weather_icon(weather_main: str):
+    if weather_main in WeatherDetails.weather_icon_dict:
+        return utils.icon_path(WeatherDetails.weather_icon_dict[weather_main])
+    return utils.icon_path(WeatherDetails.weather_icon_dict['Clouds'])
+
+
 def get_weather_details(weather_dict):
     main = weather_dict['weather'][0]['main']
     description = weather_dict['weather'][0]['description']
-    return WeatherDetails(main, description)
+    icon = get_weather_icon(main)
+    return WeatherDetails(main, description, icon)
 
 
 def get_weather_date(weather_dict):

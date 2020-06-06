@@ -34,7 +34,12 @@ def day_number_suffix(day_num):
         return 'rd'
     return 'th'
 
+
 def datetime_to_date_string(date):
     day_suffix = day_number_suffix(date.day)
     month_str = date.strftime('%B')
     return month_str + ' ' + str(date.day) + day_suffix
+
+
+def icon_path(icon_name):
+    return '/static/assets/' + icon_name

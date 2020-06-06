@@ -12,7 +12,7 @@
       <h1 class="display-3">Weather in {{ weather.location.name }}</h1><p></p>
       <div class="header">
         <h3 class="display-4">{{ weather.daily[0].weather.main }}
-        <img src="/static/assets/cloudy-icon.jpg"/></h3>
+        <img src={{ weather.daily[0].weather.icon }}/></h3>
       </div>
 
       <p></p>
