@@ -29,8 +29,8 @@ class WeatherDate:
 
 class WeatherDetails:
     weather_icon_dict = {
-        'Rain': 'rain.png',
-        'Clouds': 'clouds.jpg'
+        'Rain': 'rain.svg',
+        'Clouds': 'cloudy.svg'
     }
 
     def __init__(self, main, description, icon):
