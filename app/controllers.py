@@ -27,7 +27,6 @@ class WeatherController:
             '&lon=' + str(weather_data.location.lon) + \
             '&exclude=current,minutely,hourly' + \
             '&appid=' + self.apiKey
-        print(url)
         return url
 
     def get_weather_forecast(self, weather_data):
@@ -37,11 +36,8 @@ class WeatherController:
 
     def get_weather(self):
         current_weather_dict = self.get_current_weather()
-        print(current_weather_dict)
         weather_data = models.get_weather_data(current_weather_dict)
         weather_forecast_dict = self.get_weather_forecast(weather_data)
-        print('forecast')
-        print(weather_forecast_dict)
         forecast = models.dict_to_daily_forecast(weather_forecast_dict)
         weather_data = models.add_daily_forecast(weather_data, forecast)
 
